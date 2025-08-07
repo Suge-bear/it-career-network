@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+  <h2>Welcome, {{ user }}</h2>
+  <a href="{{ url_for('logout') }}">Logout</a> |
+  <a href="{{ url_for('profiles') }}">Profiles</a> |
+  <a href="{{ url_for('chat') }}">Chat</a> |
+  <a href="{{ url_for('upload') }}">Upload Resume</a> |
+  <a href="{{ url_for('jobs') }}">Job Postings</a>
+
+  <h3>Track Your Training</h3>
+  <form method="post" action="{{ url_for('update_training') }}">
+    Course Name: <input name="name"><br>
+    Progress (%): <input name="progress" type="number"><br>
+    <button type="submit">Add</button>
+  </form>
+
+  <h3>Your Current Training</h3>
+  <ul>
+    {% for item in user.training %}
+      <li>{{ item.name }} - {{ item.progress }}%</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Career Paths</h3>
+  <ul>
+    {% for path in paths %}
+      <li><a href="{{ url_for('path_detail', path_id=path.id) }}">{{ path.title }}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

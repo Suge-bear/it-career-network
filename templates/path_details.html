@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ path.title }}</title></head>
+<body>
+  <h2>{{ path.title }}</h2>
+  <ul>
+    {% for req in path.requirements %}
+      <li>{{ req }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('home') }}">Back to Dashboard</a>
+</body>
+</html>

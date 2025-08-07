@@ -1,0 +1,12 @@
+[
+  {
+    "id": "helpdesk",
+    "title": "Help Desk Technician",
+    "requirements": ["Customer service", "Basic networking", "Windows OS", "Ticketing systems"]
+  },
+  {
+    "id": "sysadmin",
+    "title": "System Administrator",
+    "requirements": ["Windows Server", "Linux CLI", "Virtualization", "Active Directory"]
+  }
+]

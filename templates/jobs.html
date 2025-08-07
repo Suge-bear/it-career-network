@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Job Listings</title></head>
+<body>
+  <h2>Filtered Job Listings (Example)</h2>
+  <ul>
+    {% for job in jobs %}
+      <li>{{ job }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('home') }}">Back</a>
+</body>
+</html>
