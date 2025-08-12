@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>IT Career Paths</h2>
+
+{% for path in career_paths %}
+<div class="career-card">
+    <h3>{{ path.name }}</h3>
+    <p>{{ path.description }}</p>
+    <p><strong>Entry Requirements:</strong> {{ path.requirements }}</p>
+    <p><strong>Your Match:</strong> {{ path.match }}%</p>
+</div>
+{% else %}
+<p>No career paths found.</p>
+{% endfor %}
+
+{% endblock %}
+

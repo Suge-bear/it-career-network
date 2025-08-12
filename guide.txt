@@ -1,0 +1,20 @@
+IT Career Navigator — Quick Setup (Windows 11)
+
+1) Open PowerShell or CMD and cd into the project folder:
+   cd C:\path\to\it_career_navigator
+
+2) Create and activate venv:
+   python -m venv venv
+   venv\Scripts\activate
+
+3) Install dependencies:
+   pip install -r requirements.txt
+
+4) Run the app:
+   python app.py
+
+Open your browser at http://127.0.0.1:5000
+
+Notes:
+- First run will seed career paths into SQLite DB (career.db)
+- Use the register page to create accounts

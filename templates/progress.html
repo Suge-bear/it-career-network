@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Training Progress</h2>
+
+<form method="POST">
+    <label for="training_item">Add Training/Certification:</label>
+    <input type="text" id="training_item" name="training_item" placeholder="e.g., CompTIA A+, Python Basics" required>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    {% for item in progress_items %}
+        <li>{{ item }}</li>
+    {% else %}
+        <li>No training progress recorded yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
