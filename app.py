@@ -3,10 +3,8 @@ import json
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 from models import Base, User, Training, CareerPath
 
 # --------------------
@@ -19,7 +17,7 @@ UPLOAD_FOLDER = os.path.join(APP_DIR, "uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "dev-secret")  # override in prod
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 5 * 1024 * 1024  # 5MB uploads
 
@@ -38,7 +36,7 @@ if not db.query(CareerPath).first():
             entries = json.load(f)
         for e in entries:
             if not db.query(CareerPath).filter_by(id=e["id"]).first():
-                db.add(CareerPath(id=e["id"], title=e["title"], requirements=e.get("requirements","")))
+                db.add(CareerPath(id=e["id"], title=e["title"], requirements=e.get("requirements", "")))
         db.commit()
         print("Seeded career paths.")
     except Exception as exc:
@@ -53,11 +51,6 @@ def current_user():
     return None
 
 def calc_match_percent(user, career_requirements):
-    """
-    career_requirements: comma-separated string
-    We consider a requirement 'met' if user has training with that exact name and progress >= 70.
-    (You can tune matching logic later — fuzzy matching, synonyms, etc.)
-    """
     if not career_requirements:
         return 0
     reqs = [r.strip() for r in career_requirements.split(",") if r.strip()]
@@ -66,7 +59,6 @@ def calc_match_percent(user, career_requirements):
     user_training = {t.name: t.progress for t in user.training} if user else {}
     met = 0
     for r in reqs:
-        # exact match first; fallback: case-insensitive
         prog = user_training.get(r, user_training.get(r.lower(), 0))
         if prog >= 70:
             met += 1
@@ -101,11 +93,6 @@ def register():
         flash("Account created. Welcome!")
         return redirect(url_for("home"))
     return render_template("register.html")
-
-@app.route("/signup", methods=["GET", "POST"])
-def signup():
-    return register()
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -174,12 +161,14 @@ def profile_detail(username):
     if not u:
         flash("User not found.")
         return redirect(url_for("profiles"))
-    # compute match for each path
     paths = db.query(CareerPath).all()
-    path_matches = [{ "title": p.title, "match": calc_match_percent(u, p.requirements), "requirements": p.requirements } for p in paths]
+    path_matches = [{
+        "title": p.title,
+        "match": calc_match_percent(u, p.requirements),
+        "requirements": p.requirements
+    } for p in paths]
     return render_template("profile_detail.html", user=u, path_matches=path_matches)
 
-# Simple file upload (resumes/certs)
 @app.route("/upload", methods=["GET", "POST"])
 def upload():
     user = current_user()
@@ -200,7 +189,6 @@ def upload():
         return redirect(url_for("home"))
     return render_template("uploads.html")
 
-# Simple example job feed
 @app.route("/jobs")
 def jobs():
     jobs_list = []

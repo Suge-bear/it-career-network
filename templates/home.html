@@ -1,29 +1,31 @@
 {% extends "base.html" %}
-
 {% block title %}Dashboard{% endblock %}
-
 {% block content %}
 <h2>Welcome, {{ user.username }}!</h2>
 
-<h3>Your Career Paths</h3>
-{% for path in path_data %}
-<div class="career-card">
-    <h4>{{ path.title }}</h4>
-    <p><strong>Requirements:</strong> {{ path.requirements }}</p>
-    <p><strong>Match:</strong> {{ path.match }}%</p>
-</div>
-{% else %}
-<p>No career paths found.</p>
-{% endfor %}
-
-<h3>Add Training</h3>
+<h3>Your Training</h3>
 <form method="POST" action="{{ url_for('add_training') }}">
-    <label>Training Name:</label>
-    <input type="text" name="name" required>
-
-    <label>Progress (%):</label>
-    <input type="number" name="progress" min="0" max="100" required>
-
+    <input type="text" name="name" placeholder="Training Name" required>
+    <input type="number" name="progress" placeholder="Progress %" min="0" max="100">
     <button type="submit">Add Training</button>
 </form>
+
+<ul>
+{% for t in user.training %}
+    <li>{{ t.name }} - {{ t.progress }}%</li>
+{% else %}
+    <li>No training records yet.</li>
+{% endfor %}
+</ul>
+
+<h3>Career Paths</h3>
+<ul>
+{% for p in path_data %}
+    <li>
+        <strong>{{ p.title }}</strong>  
+        (Match: {{ p.match }}%)<br>
+        Requirements: {{ p.requirements }}
+    </li>
+{% endfor %}
+</ul>
 {% endblock %}

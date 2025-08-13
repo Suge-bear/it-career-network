@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}IT Career App{% endblock %}</title>
+    <title>{{ title if title else "IT Career App" }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -13,6 +13,7 @@
             {% if 'username' in session %}
                 <a href="{{ url_for('home') }}">Dashboard</a>
                 <a href="{{ url_for('profiles') }}">Profiles</a>
+                <a href="{{ url_for('jobs') }}">Jobs</a>
                 <a href="{{ url_for('logout') }}">Logout</a>
             {% else %}
                 <a href="{{ url_for('login') }}">Login</a>
@@ -31,6 +32,7 @@
                 </ul>
             {% endif %}
         {% endwith %}
+
         {% block content %}{% endblock %}
     </main>
 

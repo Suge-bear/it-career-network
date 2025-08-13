@@ -1,68 +1,49 @@
-/* Global reset & typography */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
 
-/* Header */
 header {
-    background-color: #0077cc;
-    color: #fff;
-    padding: 1rem;
+    background: #343a40;
+    color: white;
+    padding: 10px;
 }
 
 header h1 {
     margin: 0;
+    display: inline-block;
 }
 
 nav {
-    margin-top: 0.5rem;
+    float: right;
 }
 
 nav a {
-    color: #fff;
+    color: white;
+    margin-left: 15px;
     text-decoration: none;
-    margin-right: 1rem;
-    font-weight: bold;
 }
 
 nav a:hover {
     text-decoration: underline;
 }
 
-/* Main content area */
 main {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    padding: 20px;
 }
 
-/* Flash messages */
+footer {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
 .flashes {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 1rem;
+    background: #ffeeba;
+    border: 1px solid #f0ad4e;
+    padding: 10px;
+    list-style: none;
 }
-
-.flashes li {
-    background-color: #ffefc4;
-    padding: 0.5rem;
-    border: 1px solid #f2d16b;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-}
-
-/* Forms */
-form label {
-    display: block;
-    margin-top: 0.75rem;
-    font-weight: bold;
-}
-
-for

@@ -1,3 +1,6 @@
 flask
-werkzeug
 sqlalchemy
+werkzeug
+gunicorn
+email_validator
+flask-wtf

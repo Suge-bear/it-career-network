@@ -1,26 +1,28 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Text
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship, declarative_base
 
 Base = declarative_base()
 
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
-    username = Column(String, unique=True, nullable=False)
-    password = Column(String, nullable=False)   # store hashed password
-    role = Column(String, nullable=True)
-    training = relationship("Training", back_populates="user", cascade="all, delete-orphan")
+    username = Column(String(50), unique=True, nullable=False)
+    password = Column(String(255), nullable=False)
+    role = Column(String(50), nullable=True)
+
+    training = relationship("Training", back_populates="user")
 
 class Training(Base):
     __tablename__ = "training"
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    progress = Column(Integer, default=0)  # 0-100
+    name = Column(String(100), nullable=False)
+    progress = Column(Integer, default=0)
     user_id = Column(Integer, ForeignKey("users.id"))
+
     user = relationship("User", back_populates="training")
 
 class CareerPath(Base):
     __tablename__ = "career_paths"
-    id = Column(String, primary_key=True)   # e.g. "sysadmin"
-    title = Column(String, nullable=False)
-    requirements = Column(Text, nullable=True)  # comma-separated list
+    id = Column(Integer, primary_key=True)
+    title = Column(String(100), nullable=False)
+    requirements = Column(String(500), nullable=True)

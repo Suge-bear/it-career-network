@@ -1,26 +1,20 @@
 {% extends "base.html" %}
-
 {% block title %}Profile - {{ user.username }}{% endblock %}
-
 {% block content %}
 <h2>{{ user.username }}</h2>
-<p>Role: {{ user.role }}</p>
-
-<h3>Career Path Matches</h3>
-<ul>
-{% for match in path_matches %}
-    <li>{{ match.title }} - {{ match.match }}% (Requirements: {{ match.requirements }})</li>
-{% else %}
-    <li>No career paths found.</li>
-{% endfor %}
-</ul>
-
 <h3>Training</h3>
 <ul>
 {% for t in user.training %}
     <li>{{ t.name }} - {{ t.progress }}%</li>
 {% else %}
     <li>No training records.</li>
+{% endfor %}
+</ul>
+
+<h3>Career Path Matches</h3>
+<ul>
+{% for p in path_matches %}
+    <li>{{ p.title }} - Match: {{ p.match }}% (Requirements: {{ p.requirements }})</li>
 {% endfor %}
 </ul>
 {% endblock %}

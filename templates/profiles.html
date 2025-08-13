@@ -1,12 +1,10 @@
 {% extends "base.html" %}
-
 {% block title %}Profiles{% endblock %}
-
 {% block content %}
-<h2>User Profiles</h2>
+<h2>All User Profiles</h2>
 <ul>
 {% for u in users %}
-    <li><a href="{{ url_for('profile_detail', username=u.username) }}">{{ u.username }}</a> - {{ u.role }}</li>
+    <li><a href="{{ url_for('profile_detail', username=u.username) }}">{{ u.username }}</a></li>
 {% else %}
     <li>No users found.</li>
 {% endfor %}

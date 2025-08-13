@@ -1,17 +1,17 @@
 [
-  {
-    "id": "sysadmin",
-    "title": "System Administrator",
-    "requirements": "Linux, Networking, Scripting"
-  },
-  {
-    "id": "cloud",
-    "title": "Cloud Engineer",
-    "requirements": "AWS, Terraform, Python"
-  },
-  {
-    "id": "security",
-    "title": "Cybersecurity Analyst",
-    "requirements": "SIEM, Threat Detection, Linux"
-  }
+    {
+        "id": 1,
+        "title": "System Administrator",
+        "requirements": "Linux, Networking, Security Basics"
+    },
+    {
+        "id": 2,
+        "title": "Network Engineer",
+        "requirements": "Networking, Routing, Switching"
+    },
+    {
+        "id": 3,
+        "title": "Cloud Engineer",
+        "requirements": "AWS, Linux, Scripting"
+    }
 ]
