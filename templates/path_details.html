@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head><title>{{ path.title }}</title></head>
-<body>
-  <h2>{{ path.title }}</h2>
-  <ul>
-    {% for req in path.requirements %}
-      <li>{{ req }}</li>
-    {% endfor %}
-  </ul>
-  <a href="{{ url_for('home') }}">Back to Dashboard</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Profile - {{ user.username }}{% endblock %}
+
+{% block content %}
+<h2>{{ user.username }}</h2>
+<p>Role: {{ user.role }}</p>
+
+<h3>Career Path Matches</h3>
+<ul>
+{% for match in path_matches %}
+    <li>{{ match.title }} - {{ match.match }}% (Requirements: {{ match.requirements }})</li>
+{% else %}
+    <li>No career paths found.</li>
+{% endfor %}
+</ul>
+
+<h3>Training</h3>
+<ul>
+{% for t in user.training %}
+    <li>{{ t.name }} - {{ t.progress }}%</li>
+{% else %}
+    <li>No training records.</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,77 +1,68 @@
+/* Global reset & typography */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #f4f4f4;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
+/* Header */
 header {
-    background: #2c3e50;
-    color: white;
-    padding: 1rem 2rem;
-    text-align: center;
+    background-color: #0077cc;
+    color: #fff;
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 0.5rem;
 }
 
 nav a {
-    color: white;
-    margin: 0 10px;
+    color: #fff;
     text-decoration: none;
+    margin-right: 1rem;
+    font-weight: bold;
 }
 
 nav a:hover {
     text-decoration: underline;
 }
 
-.container {
-    width: 80%;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Main content area */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
 }
 
-button {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
+/* Flash messages */
+.flashes {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1rem;
 }
 
-button:hover {
-    background: #2ecc71;
+.flashes li {
+    background-color: #ffefc4;
+    padding: 0.5rem;
+    border: 1px solid #f2d16b;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/* Forms */
+form label {
+    display: block;
+    margin-top: 0.75rem;
+    font-weight: bold;
 }
 
-.job-card, .career-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    background-color: #fafafa;
-}
-
-.progress-bar {
-    height: 20px;
-    background: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 5px;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    background: #3498db;
-    width: 0;
-    transition: width 0.4s ease;
-}
+for

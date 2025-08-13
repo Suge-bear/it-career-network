@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head><title>User Profiles</title></head>
-<body>
-  <h2>All User Profiles</h2>
-  <ul>
-    {% for username, data in users.items() %}
-      <li><strong>{{ username }}</strong> - {{ data.current_role }}</li>
-    {% endfor %}
-  </ul>
-  <a href="{{ url_for('home') }}">Back</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Profiles{% endblock %}
+
+{% block content %}
+<h2>User Profiles</h2>
+<ul>
+{% for u in users %}
+    <li><a href="{{ url_for('profile_detail', username=u.username) }}">{{ u.username }}</a> - {{ u.role }}</li>
+{% else %}
+    <li>No users found.</li>
+{% endfor %}
+</ul>
+{% endblock %}
