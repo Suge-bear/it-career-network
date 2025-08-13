@@ -1,13 +1,19 @@
 {% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
 {% block content %}
-<h2>Register</h2>
-<form method="POST">
-    <label>Username:</label>
-    <input type="text" name="username" required>
+<h2>Create an Account</h2>
+<form method="POST" action="{{ url_for('register') }}">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
 
-    <label>Password:</label>
-    <input type="password" name="password" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
 
-    <button type="submit">Register</button>
+    <label for="role">Role (optional):</label>
+    <input type="text" id="role" name="role" placeholder="e.g., Student, SysAdmin, Developer">
+
+    <button type="submit">Sign Up</button>
 </form>
 {% endblock %}

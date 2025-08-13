@@ -1,4 +1,3 @@
 flask
 werkzeug
 sqlalchemy
-email_validator

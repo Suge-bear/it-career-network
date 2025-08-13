@@ -102,6 +102,11 @@ def register():
         return redirect(url_for("home"))
     return render_template("register.html")
 
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    return register()
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
